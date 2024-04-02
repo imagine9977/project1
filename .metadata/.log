@@ -1581,3 +1581,663 @@ java.lang.RuntimeException
 	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:52:44.196
+!MESSAGE Error creating JDBC Connection connection to Oracle1. (Error: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=Mu5w6T2UTKSPP9Po4JzitQ==))
+!STACK 0
+java.sql.SQLRecoverableException: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=Mu5w6T2UTKSPP9Po4JzitQ==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:166)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection (CONNECTION_ID=Mu5w6T2UTKSPP9Po4JzitQ==)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:677)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:568)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:953)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:350)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 14 more
+Caused by: java.net.UnknownHostException: server
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1386)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1307)
+	at oracle.net.nt.TcpNTAdapter.resolveInetAddresses(TcpNTAdapter.java:571)
+	at oracle.net.nt.TcpNTAdapter.doLocalDNSLookupConnect(TcpNTAdapter.java:296)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:265)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:238)
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:902)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:638)
+	... 19 more
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:52:44.197
+!MESSAGE Error creating SQL Model Connection connection to Oracle1. (Error: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=Gudrq87FTYKjdFyzaTkeSQ==))
+!STACK 0
+java.sql.SQLRecoverableException: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=Gudrq87FTYKjdFyzaTkeSQ==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:163)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection (CONNECTION_ID=Gudrq87FTYKjdFyzaTkeSQ==)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:677)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:568)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:953)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:350)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 20 more
+Caused by: java.net.UnknownHostException: server
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1386)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1307)
+	at oracle.net.nt.TcpNTAdapter.resolveInetAddresses(TcpNTAdapter.java:571)
+	at oracle.net.nt.TcpNTAdapter.doLocalDNSLookupConnect(TcpNTAdapter.java:296)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:265)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:238)
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:902)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:638)
+	... 25 more
+
+!ENTRY org.eclipse.datatools.connectivity 4 -1 2024-04-02 17:52:44.305
+!MESSAGE Could not connect to Oracle1.
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:52:44.305
+!MESSAGE Error creating SQL Model Connection connection to Oracle1. (Error: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=Gudrq87FTYKjdFyzaTkeSQ==))
+!STACK 0
+java.sql.SQLRecoverableException: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=Gudrq87FTYKjdFyzaTkeSQ==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:163)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection (CONNECTION_ID=Gudrq87FTYKjdFyzaTkeSQ==)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:677)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:568)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:953)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:350)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 20 more
+Caused by: java.net.UnknownHostException: server
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1386)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1307)
+	at oracle.net.nt.TcpNTAdapter.resolveInetAddresses(TcpNTAdapter.java:571)
+	at oracle.net.nt.TcpNTAdapter.doLocalDNSLookupConnect(TcpNTAdapter.java:296)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:265)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:238)
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:902)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:638)
+	... 25 more
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:52:44.306
+!MESSAGE Error creating JDBC Connection connection to Oracle1. (Error: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=Mu5w6T2UTKSPP9Po4JzitQ==))
+!STACK 0
+java.sql.SQLRecoverableException: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=Mu5w6T2UTKSPP9Po4JzitQ==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:166)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection (CONNECTION_ID=Mu5w6T2UTKSPP9Po4JzitQ==)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:677)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:568)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:953)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:350)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 14 more
+Caused by: java.net.UnknownHostException: server
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1386)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1307)
+	at oracle.net.nt.TcpNTAdapter.resolveInetAddresses(TcpNTAdapter.java:571)
+	at oracle.net.nt.TcpNTAdapter.doLocalDNSLookupConnect(TcpNTAdapter.java:296)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:265)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:238)
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:902)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:638)
+	... 19 more
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:52:51.061
+!MESSAGE Error creating JDBC Connection connection to Oracle1. (Error: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=xjs6TqizSVq3lku9qmjWMg==))
+!STACK 0
+java.sql.SQLRecoverableException: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=xjs6TqizSVq3lku9qmjWMg==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:166)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection (CONNECTION_ID=xjs6TqizSVq3lku9qmjWMg==)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:677)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:568)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:953)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:350)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 14 more
+Caused by: java.net.UnknownHostException: server
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1386)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1307)
+	at oracle.net.nt.TcpNTAdapter.resolveInetAddresses(TcpNTAdapter.java:571)
+	at oracle.net.nt.TcpNTAdapter.doLocalDNSLookupConnect(TcpNTAdapter.java:296)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:265)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:238)
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:902)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:638)
+	... 19 more
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:52:51.063
+!MESSAGE Error creating SQL Model Connection connection to Oracle1. (Error: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=a/ug/Ck4QKaG8P4oWo4izw==))
+!STACK 0
+java.sql.SQLRecoverableException: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=a/ug/Ck4QKaG8P4oWo4izw==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:163)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection (CONNECTION_ID=a/ug/Ck4QKaG8P4oWo4izw==)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:677)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:568)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:953)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:350)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 20 more
+Caused by: java.net.UnknownHostException: server
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1386)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1307)
+	at oracle.net.nt.TcpNTAdapter.resolveInetAddresses(TcpNTAdapter.java:571)
+	at oracle.net.nt.TcpNTAdapter.doLocalDNSLookupConnect(TcpNTAdapter.java:296)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:265)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:238)
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:902)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:638)
+	... 25 more
+
+!ENTRY org.eclipse.datatools.connectivity 4 -1 2024-04-02 17:52:51.175
+!MESSAGE Could not connect to Oracle1.
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:52:51.175
+!MESSAGE Error creating SQL Model Connection connection to Oracle1. (Error: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=a/ug/Ck4QKaG8P4oWo4izw==))
+!STACK 0
+java.sql.SQLRecoverableException: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=a/ug/Ck4QKaG8P4oWo4izw==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:163)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection (CONNECTION_ID=a/ug/Ck4QKaG8P4oWo4izw==)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:677)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:568)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:953)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:350)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 20 more
+Caused by: java.net.UnknownHostException: server
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1386)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1307)
+	at oracle.net.nt.TcpNTAdapter.resolveInetAddresses(TcpNTAdapter.java:571)
+	at oracle.net.nt.TcpNTAdapter.doLocalDNSLookupConnect(TcpNTAdapter.java:296)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:265)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:238)
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:902)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:638)
+	... 25 more
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:52:51.176
+!MESSAGE Error creating JDBC Connection connection to Oracle1. (Error: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=xjs6TqizSVq3lku9qmjWMg==))
+!STACK 0
+java.sql.SQLRecoverableException: IO 오류: The Network Adapter could not establish the connection (CONNECTION_ID=xjs6TqizSVq3lku9qmjWMg==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:166)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: The Network Adapter could not establish the connection (CONNECTION_ID=xjs6TqizSVq3lku9qmjWMg==)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:677)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:568)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:953)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:350)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 14 more
+Caused by: java.net.UnknownHostException: server
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:797)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1386)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1307)
+	at oracle.net.nt.TcpNTAdapter.resolveInetAddresses(TcpNTAdapter.java:571)
+	at oracle.net.nt.TcpNTAdapter.doLocalDNSLookupConnect(TcpNTAdapter.java:296)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:265)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:238)
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:902)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:638)
+	... 19 more
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:53:34.090
+!MESSAGE Error creating SQL Model Connection connection to Oracle1. (Error: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=KtusaJP1TbOazKFqvTKvVQ==))
+!STACK 0
+java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=KtusaJP1TbOazKFqvTKvVQ==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:163)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=KtusaJP1TbOazKFqvTKvVQ==)
+	at oracle.net.ns.NSProtocolNIO.createRefusePacketException(NSProtocolNIO.java:816)
+	at oracle.net.ns.NSProtocolNIO.handleConnectPacketResponse(NSProtocolNIO.java:396)
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:207)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:354)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 20 more
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:53:34.092
+!MESSAGE Error creating JDBC Connection connection to Oracle1. (Error: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=+sEAAqq5SNaY864I1j0CeQ==))
+!STACK 0
+java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=+sEAAqq5SNaY864I1j0CeQ==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:166)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=+sEAAqq5SNaY864I1j0CeQ==)
+	at oracle.net.ns.NSProtocolNIO.createRefusePacketException(NSProtocolNIO.java:816)
+	at oracle.net.ns.NSProtocolNIO.handleConnectPacketResponse(NSProtocolNIO.java:396)
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:207)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:354)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 14 more
+
+!ENTRY org.eclipse.datatools.connectivity 4 -1 2024-04-02 17:53:34.177
+!MESSAGE Could not connect to Oracle1.
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:53:34.177
+!MESSAGE Error creating SQL Model Connection connection to Oracle1. (Error: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=KtusaJP1TbOazKFqvTKvVQ==))
+!STACK 0
+java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=KtusaJP1TbOazKFqvTKvVQ==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:163)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=KtusaJP1TbOazKFqvTKvVQ==)
+	at oracle.net.ns.NSProtocolNIO.createRefusePacketException(NSProtocolNIO.java:816)
+	at oracle.net.ns.NSProtocolNIO.handleConnectPacketResponse(NSProtocolNIO.java:396)
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:207)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:354)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 20 more
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:53:34.177
+!MESSAGE Error creating JDBC Connection connection to Oracle1. (Error: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=+sEAAqq5SNaY864I1j0CeQ==))
+!STACK 0
+java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=+sEAAqq5SNaY864I1j0CeQ==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:166)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=+sEAAqq5SNaY864I1j0CeQ==)
+	at oracle.net.ns.NSProtocolNIO.createRefusePacketException(NSProtocolNIO.java:816)
+	at oracle.net.ns.NSProtocolNIO.handleConnectPacketResponse(NSProtocolNIO.java:396)
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:207)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:354)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 14 more
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:54:15.409
+!MESSAGE Error creating JDBC Connection connection to Oracle1. (Error: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=do75HGI6TBaGciMEAgwBLw==))
+!STACK 0
+java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=do75HGI6TBaGciMEAgwBLw==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:166)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=do75HGI6TBaGciMEAgwBLw==)
+	at oracle.net.ns.NSProtocolNIO.createRefusePacketException(NSProtocolNIO.java:816)
+	at oracle.net.ns.NSProtocolNIO.handleConnectPacketResponse(NSProtocolNIO.java:396)
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:207)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:354)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 14 more
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:54:17.695
+!MESSAGE Error creating SQL Model Connection connection to Oracle1. (Error: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=nHRLZG57RCCQJYKAvpepoA==))
+!STACK 0
+java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=nHRLZG57RCCQJYKAvpepoA==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:163)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=nHRLZG57RCCQJYKAvpepoA==)
+	at oracle.net.ns.NSProtocolNIO.createRefusePacketException(NSProtocolNIO.java:816)
+	at oracle.net.ns.NSProtocolNIO.handleConnectPacketResponse(NSProtocolNIO.java:396)
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:207)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:354)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 20 more
+
+!ENTRY org.eclipse.datatools.connectivity 4 -1 2024-04-02 17:54:17.802
+!MESSAGE Could not connect to Oracle1.
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:54:17.802
+!MESSAGE Error creating SQL Model Connection connection to Oracle1. (Error: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=nHRLZG57RCCQJYKAvpepoA==))
+!STACK 0
+java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=nHRLZG57RCCQJYKAvpepoA==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:163)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=nHRLZG57RCCQJYKAvpepoA==)
+	at oracle.net.ns.NSProtocolNIO.createRefusePacketException(NSProtocolNIO.java:816)
+	at oracle.net.ns.NSProtocolNIO.handleConnectPacketResponse(NSProtocolNIO.java:396)
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:207)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:354)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 20 more
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2024-04-02 17:54:17.802
+!MESSAGE Error creating JDBC Connection connection to Oracle1. (Error: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=do75HGI6TBaGciMEAgwBLw==))
+!STACK 0
+java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=do75HGI6TBaGciMEAgwBLw==)
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:882)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:687)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1086)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:90)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:728)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:649)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.createConnection(JDBCConnection.java:328)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at org.eclipse.datatools.connectivity.drivers.jdbc.JDBCConnection.open(JDBCConnection.java:96)
+	at org.eclipse.datatools.enablement.internal.oracle.JDBCOracleConnectionFactory.createConnection(JDBCOracleConnectionFactory.java:27)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:166)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+  (CONNECTION_ID=do75HGI6TBaGciMEAgwBLw==)
+	at oracle.net.ns.NSProtocolNIO.createRefusePacketException(NSProtocolNIO.java:816)
+	at oracle.net.ns.NSProtocolNIO.handleConnectPacketResponse(NSProtocolNIO.java:396)
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:207)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:354)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:2155)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:652)
+	... 14 more

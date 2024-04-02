@@ -1,0 +1,20 @@
+Project Outline
+
+
+Project Purpose
+
+Project Development Information
+Project Topic: Welcome to Dogbong-gu Banghak-dong
+Development Environment Open JDK-11
+Language: Java 11
+Web Module:JSP/Servlet 3.0
+Process Pattern: MVC Pattern
+Database System: Oracle 21C XE
+Database Design: SQL DEveloper 23.1.1
+Entity Relationship Design: draw.io 20.08.16
+Java Database Connector : ojdbc11
+Application Design: Object aid 1.2.4
+\Back Template Language: Javva/Sevlet 11
+Front Template Lnaguage: JSP(JSTL/EL) 3.0/HTML5/CSS3/JavaScript ES5
+Web Server: Tom9.0
+Package Information

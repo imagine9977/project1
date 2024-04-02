@@ -1,0 +1,8 @@
+package proj1;
+
+public class Traffic {
+	private String ttype;
+	private int no;
+	private String route;
+	private String comment;
+}

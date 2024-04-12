@@ -1,8 +1,0 @@
-package proj1;
-
-public class Guide {
-	private String pcode;
-	private int no;
-	private String route;
-	private String comment;
-}

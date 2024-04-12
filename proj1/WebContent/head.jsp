@@ -18,3 +18,4 @@
 <meta property="og:description" content="방학동, 맛집, 관광지, 시설" />
 <meta property="og:image" content="${ipath}/images/icon16_16.png" />
 <meta property="og:url" content="http://localhost:8091" />
+<link rel="stylesheet" href="${ipath }/css/common.css" />

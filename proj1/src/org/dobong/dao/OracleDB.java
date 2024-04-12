@@ -12,10 +12,10 @@ public class OracleDB implements SqlLang {
 	final static String USERID = "system";
 	final static String USERPW = "1234";
 	final static String INS_NOTICE = "insert into notice values (nseq.nextval, ? , ?, sysdate, 0)";
-
+	final static String LATEST_QNA ="select * from(select no from qna order by no desc) where rownum<=5 ";
 	
 	Connection con = null;
-	
+	@Override
 	public Connection Connect() {
 		try {
 			Class.forName(DRIVER);
@@ -29,7 +29,7 @@ public class OracleDB implements SqlLang {
 		}
 		return con;
 	}
-	
+	@Override
 	public void close(Connection con, PreparedStatement pstmt) {
 		if(pstmt!=null) {
 			try {
@@ -46,6 +46,7 @@ public class OracleDB implements SqlLang {
 			}
 		}
 	}
+	@Override
 	public void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
 		if(rs!=null) {
 			try {

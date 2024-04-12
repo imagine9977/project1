@@ -1,20 +1,38 @@
 package org.dobong.dto;
 
 public class Traffic {
+	private int tno;
 	private String ttype;
-	private int no;
+	private String no;
 	private String route;
-	private String comment;
+	private String coment;
+	private String uri;
+	public Traffic() { }
+	public Traffic(int tno, String ttype, String no, String route, String coment, String uri) {
+		super();
+		this.tno = tno;
+		this.ttype = ttype;
+		this.no = no;
+		this.route = route;
+		this.coment = coment;
+		this.uri = uri;
+	}
+	public int getTno() {
+		return tno;
+	}
+	public void setTno(int tno) {
+		this.tno = tno;
+	}
 	public String getTtype() {
 		return ttype;
 	}
 	public void setTtype(String ttype) {
 		this.ttype = ttype;
 	}
-	public int getNo() {
+	public String getNo() {
 		return no;
 	}
-	public void setNo(int no) {
+	public void setNo(String no) {
 		this.no = no;
 	}
 	public String getRoute() {
@@ -23,26 +41,21 @@ public class Traffic {
 	public void setRoute(String route) {
 		this.route = route;
 	}
-	public String getComment() {
-		return comment;
+	public String getComent() {
+		return coment;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setComent(String coment) {
+		this.coment = coment;
+	}
+	public String getUri() {
+		return uri;
+	}
+	public void setUri(String uri) {
+		this.uri = uri;
 	}
 	@Override
 	public String toString() {
-		return "Traffic [ttype=" + ttype + ", no=" + no + ", route=" + route + ", comment=" + comment + "]";
+		return "Traffic [tno=" + tno + ", ttype=" + ttype + ", no=" + no + ", route=" + route + ", coment=" + coment
+				+ ", uri=" + uri + "]";
 	}
-	public Traffic(String ttype, int no, String route, String comment) {
-		super();
-		this.ttype = ttype;
-		this.no = no;
-		this.route = route;
-		this.comment = comment;
-	}
-	public Traffic() {
-		super();
-	}
-	
-	
 }

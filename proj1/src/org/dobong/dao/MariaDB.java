@@ -13,7 +13,7 @@ public class MariaDB implements SqlLang {
 	final static String USERPW = "1234";
 	
 	Connection con = null;
-	
+	@Override
 	public Connection Connect() {
 		try {
 			Class.forName(DRIVER);
@@ -27,7 +27,7 @@ public class MariaDB implements SqlLang {
 		}
 		return con;
 	}
-	
+	@Override
 	public void close(Connection con, PreparedStatement pstmt) {
 		if(pstmt!=null) {
 			try {
@@ -44,6 +44,7 @@ public class MariaDB implements SqlLang {
 			}
 		}
 	}
+	@Override
 	public void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
 		if(rs!=null) {
 			try {

@@ -2,8 +2,9 @@ package org.dobong.dto;
 
 public class Qna {
 	private int no;
-	private String plevel;
-	private String parno;
+	private int plevel;
+	private int parno;
+	private String title;
 	private String content;
 	private String resdate;
 	private int visited;
@@ -11,16 +12,27 @@ public class Qna {
 	public Qna() {
 		super();
 	}
-	public Qna(int no, String plevel, String parno, String content, String resdate, int visited, String aid) {
+
+	public Qna(int no, int plevel, int parno, String title, String content, String resdate, int visited, String aid) {
 		super();
 		this.no = no;
 		this.plevel = plevel;
 		this.parno = parno;
+		this.title = title;
 		this.content = content;
 		this.resdate = resdate;
 		this.visited = visited;
 		this.aid = aid;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Override
 	public String toString() {
 		return "Qna [no=" + no + ", plevel=" + plevel + ", parno=" + parno + ", content=" + content + ", resdate="
@@ -32,16 +44,16 @@ public class Qna {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getPlevel() {
+	public int getPlevel() {
 		return plevel;
 	}
-	public void setPlevel(String plevel) {
+	public void setPlevel(int plevel) {
 		this.plevel = plevel;
 	}
-	public String getParno() {
+	public int getParno() {
 		return parno;
 	}
-	public void setParno(String parno) {
+	public void setParno(int parno) {
 		this.parno = parno;
 	}
 	public String getContent() {

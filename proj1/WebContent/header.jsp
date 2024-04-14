@@ -12,6 +12,9 @@
 		<c:if test="${not empty sid }">
 		<h2 style="text-align:center;">${sname } 님 환영합니다.</h2>
 		</c:if>
+		<c:if test="${empty sid }">
+		<h2 style="text-align:center;">모든 서비스를 활용시 로그인 요망</h2>
+		</c:if>
 	</div>
 	<nav id="gnb">
 		<ul class="">
@@ -57,7 +60,7 @@
 				<ul class="sub_menu">
 					<li><a href="${hpath }/NotiList.do">공지사항</a></li>
 					<li><a href="">자료실</a></li>
-					<li><a href="${hpath }/QnaList.do">묻고답하기</a></li>
+					<li><a href="${hpath }/GetQnaList.do">묻고답하기</a></li>
 				</ul>
 			</li>
 		</ul>

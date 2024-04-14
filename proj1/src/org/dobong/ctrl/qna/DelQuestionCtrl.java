@@ -6,40 +6,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.dobong.dao.QnaDAO;
 import org.dobong.dto.Qna;
 
-@WebServlet("/AnswerIns.do")
-public class AnswerInsCtrl extends HttpServlet {
+@WebServlet("/DelQuestion.do")
+public class DelQuestionCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AnswerInsCtrl() {
+    public DelQuestionCtrl() {
         super();
     }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		HttpSession session = request.getSession();
 		
-		String aid = (String) session.getAttribute("sid");
+		int parno = Integer.parseInt(request.getParameter("parno"));
 		
-		Qna qna = new Qna();
-		qna.setParno(Integer.parseInt(request.getParameter("parno")));
-		qna.setTitle(request.getParameter("title"));
-		qna.setContent(request.getParameter("content"));
-		qna.setAid(aid);
 		QnaDAO dao = new QnaDAO();
-		int cnt = dao.insAnswer(qna);
+		int cnt = dao.delQuestion(parno);
 		
 		if(cnt>=1) {
 			response.sendRedirect("/proj1/GetQnaList.do");
 		} else {
-			response.sendRedirect("/qna/aIns.jsp?parno="+qna.getParno());
+			response.sendRedirect("/proj1/GetQna.do?no="+parno);
 		}
 	}
 

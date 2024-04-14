@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dobong.dto.Notice;
 import org.dobong.dto.Qna;
 
 public class QnaDAO {
@@ -14,15 +13,15 @@ public class QnaDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	public List<Qna> getQnaList(){
-		List<Qna> qnaList = new ArrayList<>();
+	public List<Qna> getLatestQnaList(){
+		List<Qna> qList = new ArrayList<>();
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.Connect();
-			pstmt = con.prepareStatement(SqlLang.LATEST_QNA);
+			pstmt = con.prepareStatement(OracleDB.LATEST_QNA);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				Qna noti = new Qna(rs.getInt("no"),
+				Qna q = new Qna(rs.getInt("no"),
 						rs.getInt("plevel"),
 						rs.getInt("parno"),
 						rs.getString("title"),
@@ -30,57 +29,87 @@ public class QnaDAO {
 						rs.getString("resdate"),
 						rs.getInt("visited"),
 						rs.getString("aid"));
-				qnaList.add(noti);
+				qList.add(q);
 			}
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
 			oracle.close(con, pstmt, rs);
 		}
-		return qnaList;
+		return qList;
 	}
 	
-	public Notice getNotice(int no) {
-		Notice noti = new Notice();
+	public List<Qna> getQnaList(){
+		List<Qna> qList = new ArrayList<>();
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.Connect();
+			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_QNA);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Qna q = new Qna(rs.getInt("no"),
+						rs.getInt("plevel"),
+						rs.getInt("parno"),
+						rs.getString("title"),
+						rs.getString("content"),
+						rs.getString("resdate"),
+						rs.getInt("visited"),
+						rs.getString("aid"));
+				qList.add(q);
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt, rs);
+		}
+		return qList;
+	}
+	
+	public Qna getQna(int no) {
+		Qna q = new Qna();
 		OracleDB oracle = new OracleDB();
 		
 		try {
 			con = oracle.Connect();
-			pstmt = con.prepareStatement(SqlLang.VIS_UPD_NOTICE);
+			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_QNA);
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
 			pstmt = null;
-			pstmt = con.prepareStatement(SqlLang.SELECT_NOTICE_BYNO);
+			pstmt = con.prepareStatement(SqlLang.SELECT_QNA_BYNO);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				noti.setNo(rs.getInt("no"));
-				noti.setTitle(rs.getString("title"));
-				noti.setContent(rs.getString("content"));
-				noti.setResdate(rs.getString("resdate"));
-				noti.setVisited(rs.getInt("visited"));
+				q.setNo(rs.getInt("no"));
+				q.setPlevel(rs.getInt("plevel"));
+				q.setParno(rs.getInt("parno"));
+				q.setTitle(rs.getString("title"));
+				q.setContent(rs.getString("content"));
+				q.setResdate(rs.getString("resdate"));
+				q.setVisited(rs.getInt("visited"));
+				q.setAid(rs.getString("aid"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			oracle.close(con, pstmt, rs);
 		}
-		return noti;
+		return q;
 	}
 	
-	public int insAnswer(Qna qa) {
+	public int insQuestion(Qna q) {
 		int cnt = 0;
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.Connect();
-			pstmt = con.prepareStatement(SqlLang.INS_ANSWER);
-			pstmt.setString(1, qa.getTitle());
-			pstmt.setString(2, qa.getContent());
-			pstmt.setString(3, qa.getTitle());
-			pstmt.setString(4, qa.getContent());
+			pstmt = con.prepareStatement(OracleDB.INS_QUESTION);
+			pstmt.setString(1, q.getTitle());
+			pstmt.setString(2, q.getContent());
+			pstmt.setString(3, q.getAid());
 			cnt = pstmt.executeUpdate();
 			
 			pstmt = null;
+			pstmt = con.prepareStatement(OracleDB.UPD_PARNO_QUESTION);
+			cnt = cnt + pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -88,39 +117,17 @@ public class QnaDAO {
 		}
 		return cnt;
 	}
-	public int insQuestion(Qna qa) {
+
+	public int insAnswer(Qna q) {
 		int cnt = 0;
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.Connect();
-			pstmt = con.prepareStatement(SqlLang.INS_QUESTION);
-			pstmt.setString(1, qa.getTitle());
-			pstmt.setString(2, qa.getContent());
-			pstmt.setString(3, qa.getTitle());
-			cnt = pstmt.executeUpdate();
-			
-			pstmt = null;
-			con = oracle.Connect();
-			pstmt = con.prepareStatement(SqlLang.UPD_PARNO_QUESTION);
-			
-			cnt = cnt+ pstmt.executeUpdate();
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			oracle.close(con, pstmt);
-		}
-		return cnt;
-	}
-	public int editProQna(Qna qa) {
-		int cnt = 0;
-		OracleDB oracle = new OracleDB();
-		try {
-			con = oracle.Connect();
-			pstmt = con.prepareStatement(SqlLang.SELECT_QNA_BYNO);
-			pstmt.setString(1, qa.getTitle());
-			pstmt.setString(2, qa.getContent());
-			pstmt.setInt(3, qa.getNo());
+			pstmt = con.prepareStatement(OracleDB.INS_ANSWER);
+			pstmt.setInt(1, q.getParno());
+			pstmt.setString(2, q.getTitle());
+			pstmt.setString(3, q.getContent());
+			pstmt.setString(4, q.getAid());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -130,13 +137,31 @@ public class QnaDAO {
 		return cnt;
 	}
 	
-	public int delNotice(int no){
+	public int editProQna(Qna q) {
 		int cnt = 0;
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.Connect();
-			pstmt = con.prepareStatement(SqlLang.DEL_NOTICE);
-			pstmt.setInt(1, no);
+			pstmt = con.prepareStatement(SqlLang.UPD_QNA);
+			pstmt.setString(1, q.getTitle());
+			pstmt.setString(2, q.getContent());
+			pstmt.setInt(3, q.getNo());
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
+	}
+	
+	public int delQuestion(int parno){
+		int cnt = 0;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.Connect();
+			pstmt = con.prepareStatement(SqlLang.DEL_QUESTION);
+			pstmt.setInt(1, parno);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -146,28 +171,47 @@ public class QnaDAO {
 		return cnt;
 	}
 
-	public Notice getNotice2(int no) {
-		Notice noti = new Notice();
+	public int delAnswer(int no){
+		int cnt = 0;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.Connect();
+			pstmt = con.prepareStatement(SqlLang.DEL_ANSWER);
+			pstmt.setInt(1, no);
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
+	}
+	
+	public Qna getQna2(int no) {
+		Qna q = new Qna();
 		OracleDB oracle = new OracleDB();
 		
 		try {
 			con = oracle.Connect();
 			pstmt = null;
-			pstmt = con.prepareStatement(SqlLang.SELECT_NOTICE_BYNO);
+			pstmt = con.prepareStatement(SqlLang.SELECT_QNA_BYNO);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				noti.setNo(rs.getInt("no"));
-				noti.setTitle(rs.getString("title"));
-				noti.setContent(rs.getString("content"));
-				noti.setResdate(rs.getString("resdate"));
-				noti.setVisited(rs.getInt("visited"));
+				q.setNo(rs.getInt("no"));
+				q.setPlevel(rs.getInt("plevel"));
+				q.setParno(rs.getInt("parno"));
+				q.setTitle(rs.getString("title"));
+				q.setContent(rs.getString("content"));
+				q.setResdate(rs.getString("resdate"));
+				q.setVisited(rs.getInt("visited"));
+				q.setAid(rs.getString("aid"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			oracle.close(con, pstmt, rs);
 		}
-		return noti;
+		return q;
 	}
 }

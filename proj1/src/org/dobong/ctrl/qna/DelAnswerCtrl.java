@@ -1,10 +1,6 @@
 package org.dobong.ctrl.qna;
 
-
 import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,25 +8,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.dobong.dao.QnaDAO;
-import org.dobong.dto.Qna;
 
-/**
- * Servlet implementation class GetQnaListCtrl
- */
-@WebServlet("/GetQnaList.do")
-public class GetQnaListCtrl extends HttpServlet {
+@WebServlet("/DelAnswer.do")
+public class DelAnswerCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		QnaDAO dao = new QnaDAO();
-		List<Qna> qList = dao.getQnaList();
-		request.setAttribute("qnaList", qList);
-		
-		RequestDispatcher view = request.getRequestDispatcher("/qna/qnaList.jsp");
-		view.forward(request, response);
-	}
+    public DelAnswerCtrl() {
+        super();
+    }
 
-	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		QnaDAO dao = new QnaDAO();
+		int cnt = dao.delQuestion(no);
+		
+		if(cnt>=1) {
+			response.sendRedirect("/proj1/GetQnaList.do");
+		} else {
+			response.sendRedirect("/proj1/GetQna.do?no="+no);
+		}
+	}
 
 }

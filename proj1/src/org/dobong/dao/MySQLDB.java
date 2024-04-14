@@ -7,11 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MySQLDB implements SqlLang {
-	final static String DRIVER = "org.mysql.jdbc.Driver";
+	final static String DRIVER = "org.mysql.cj.jdbc.Driver";
 	final static String URL = "jdbc:mysql://localhost:3306/kh"; 
 	final static String USERID = "root";
 	final static String USERPW = "1234";
-	final static String INS_NOTICE = "insert into notice values (default, ? , ?, default, 0)";
+	final static String INS_NOTICE = "insert into notice values (default, ?, ?, default, 0)";
+	final static String LATEST_NOTICE = "select * from notice order by no desc limit 5";
+	final static String LATEST_QNA = "select * from qna order by parno desc, plevel asc limit 5";
 
 	Connection con = null;
 	

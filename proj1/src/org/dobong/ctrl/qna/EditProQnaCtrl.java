@@ -7,48 +7,39 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.dobong.dao.QnaDAO;
 import org.dobong.dto.Qna;
 
-
-@WebServlet("/QuestionIns.do")
-public class QuestionInsCtrl extends HttpServlet {
+@WebServlet("/EditProQna.do")
+public class EditProQnaCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public QuestionInsCtrl() {
+    public EditProQnaCtrl() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		HttpSession session = request.getSession();
-		
-		String aid = (String) session.getAttribute("sid");
+		int no = Integer.parseInt(request.getParameter("no"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
 		Qna qna = new Qna();
-		qna.setTitle(request.getParameter("title"));
-		qna.setContent(request.getParameter("content"));
-		qna.setAid(aid);
+		qna.setNo(no);
+		qna.setTitle(title);
+		qna.setContent(content);
+		
 		QnaDAO dao = new QnaDAO();
-		int cnt = dao.insQuestion(qna);
+		int cnt = dao.editProQna(qna);
 		
 		if(cnt>=1) {
 			response.sendRedirect("/proj1/GetQnaList.do");
 		} else {
-			response.sendRedirect("/qna/qIns.jsp");
+			response.sendRedirect("/proj1/GetQna.do?no="+no);
 		}
 	}
 

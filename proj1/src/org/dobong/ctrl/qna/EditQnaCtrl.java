@@ -12,38 +12,29 @@ import javax.servlet.http.HttpServletResponse;
 import org.dobong.dao.QnaDAO;
 import org.dobong.dto.Qna;
 
-@WebServlet("/GetQna.do")
-public class GetQnaCtrl extends HttpServlet {
+@WebServlet("/EditQna.do")
+public class EditQnaCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    public EditQnaCtrl() {
+        super();
+    }
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public GetQnaCtrl() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
 		QnaDAO dao = new QnaDAO();
-		Qna qna = dao.getQna(no);
+		Qna qna = dao.getQna2(no);
 		
 		request.setAttribute("qna", qna);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/qna/getQna.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/qna/editQna.jsp");
 		view.forward(request, response);
-		
 	}
 
 }

@@ -13,6 +13,29 @@ public class NoticeDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
+	public List<Notice> getLatestNoticeList(){
+		List<Notice> notiList = new ArrayList<>();
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.Connect();
+			pstmt = con.prepareStatement(OracleDB.LATEST_NOTICE);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Notice noti = new Notice(rs.getInt("no"),
+						rs.getString("title"),
+						rs.getString("content"),
+						rs.getString("resdate"),
+						rs.getInt("visited"));
+				notiList.add(noti);
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt, rs);
+		}
+		return notiList;
+	}
+	
 	public List<Notice> getNoticeList(){
 		List<Notice> notiList = new ArrayList<>();
 		OracleDB oracle = new OracleDB();
@@ -42,7 +65,7 @@ public class NoticeDAO {
 		
 		try {
 			con = oracle.Connect();
-			pstmt = con.prepareStatement(SqlLang.VIS_UPD_NOTICE);
+			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_NOTICE);
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
 			pstmt = null;
@@ -69,7 +92,7 @@ public class NoticeDAO {
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.Connect();
-			pstmt = con.prepareStatement(SqlLang.INS_NOTICE);
+			pstmt = con.prepareStatement(OracleDB.INS_NOTICE);
 			pstmt.setString(1, noti.getTitle());
 			pstmt.setString(2, noti.getContent());
 			cnt = pstmt.executeUpdate();

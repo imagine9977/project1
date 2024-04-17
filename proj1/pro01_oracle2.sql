@@ -29,5 +29,7 @@ create table member(
 	visited int,
 	aid varchar2(20)
     );
-    
-    
+    create sequence qseq increment by 1 start with 1 minvalue 1 maxvalue 99999 nocycle;
+
+     delete from qna where no=2;
+  

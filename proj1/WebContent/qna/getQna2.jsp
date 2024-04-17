@@ -66,7 +66,7 @@ th.item3 { width:20%; }
 				<hr>
 				<div class="btn-group">
 				  <c:if test="${(not empty sid) and qna.plevel==1 }">
-				  <a href="${path0 }/qna/aIns.jsp?parno=${qna.no }" class="btn btn-secondary">답변 등록</a>
+				  <a href="${path0 }/qna/aIns2.jsp?parno=${qna.no }" class="btn btn-secondary">답변 등록</a>
 				  </c:if>
 				  <c:if test="${sid.equals(qna.aid) }">
 					  <c:if test="${qna.plevel==1 }">

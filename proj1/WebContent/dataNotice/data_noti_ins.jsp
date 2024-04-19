@@ -27,33 +27,10 @@
 	background-color: #42bcf5;
 }
 
-.display_title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .page_title {
 	font-size: 36px;
 	padding-top: 2em;
 	text-align: center;
-}
-
-th.item1 {
-	width: 8%;
-}
-
-th.item2 {
-	width: 60%;
-}
-
-th.item3 {
-	width: 20%;
-}
-
-td {
-word-break: break-word;
-
 }
 </style>
 </head>
@@ -64,38 +41,29 @@ word-break: break-word;
 	<div id="contents">
 		<section class="page" id="page1">
 			<div style="width: 1400px; margin: 0 auto;">
-				<h3 class="page_title">공지사항 상세보기</h3>
-				<div>
+				<h3 class="page_title">공지사항 글 등록</h3>
+				<form action="${path0 }/NotiIns.do" method="post">
 					<table class="table">
-					<tbody>
-						<tr>
-							<th>글 번호</th>
-							<td>${noti.no }</td>
-						</tr>
-						<tr>
-							<th>글 제목</th>
-							<td>${noti.title }</td>
-						</tr>
-						<tr>
-							<th>글 내용</th>
-							<td >${noti.content }</td>
-						</tr>
-						<tr>
-							<th>작성일시</th>		
-							<td>${noti.resdate }</td>
-						</tr>
-						<tr>
-							<th>조회수</th>
-							<td>${noti.visited }</td>
-						</tr>
-					</tbody>
-				</table>
+						<tbody>
+							<tr>
+								<th><label for="title">제목</label></th>
+								<td><input type="text" name="title" id="title"
+									class="form-control" maxlength="100" required></td>
+							</tr>
+							<tr>
+								<th><label for="content">내용</label></th>
+								<td><textarea name="content" id="content" rows="8"
+										cols="80" class="form-control"></textarea></td>
+							</tr>
+						</tbody>
+					</table>
 					<hr>
 					<div class="btn-group">
-				  <a href="${path0 }/notice/noti_ins.jsp" class="btn btn-secondary">글 등록</a>
-				  <a href="${path0 }/EditNotice.do?no=${noti.no }" class="btn btn-secondary">글 수정</a>
-				  <button type="button" class="btn btn-danger" data-toggle="modal"
-							data-target="#exampleModal">글 삭제</button>
+						<button type="submit" class="btn btn-primary">글 등록</button>
+						<!--  <a href="${path0 }/NotiList.do" class="btn btn-danger">취소</a>-->
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#exampleModal">취소</button>
 
 						<!-- Modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -110,19 +78,17 @@ word-break: break-word;
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
-									<div class="modal-body">해당 글을 삭제하시겠습니까?</div>
+									<div class="modal-body">글 작성을 그만 두시겠습니까?</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">취소</button>
-										<a href="${path0 }/DelNotice.do?no=${noti.no }" class="btn btn-danger">네</a>
+											data-dismiss="modal">글 계속 작성</button>
+										<a href="${path0 }/NotiList.do" class="btn btn-danger">글 작성 취소</a>
 									</div>
 								</div>
 							</div>
 						</div>
-				  <!--<a href="${path0 }/DelNotice.do?no=${noti.no }" class="btn btn-secondary">글 삭제</a> -->
-				  <a href="${path0 }/NotiList.do" class="btn btn-secondary">글 목록</a>
-				</div>
-				</div>
+					</div>
+				</form>
 			</div>
 		</section>
 		<section class="page" id="page2">

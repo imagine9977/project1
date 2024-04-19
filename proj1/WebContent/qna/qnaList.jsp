@@ -22,6 +22,12 @@ th.item1 { width:8%; }
 th.item2 { width:50%; }
 th.item3 { width:15%; }
 th.item4 { width:15%; }
+.display_title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 </style>
 </head>
 <body>
@@ -61,10 +67,10 @@ th.item4 { width:15%; }
 								<td>
 									<c:if test="${empty sid }">
 										<c:if test="${dto.plevel==1 }">
-										<strong>${dto.title }</strong>
+										<strong class="page_title">${dto.title }</strong>
 										</c:if>
 										<c:if test="${dto.plevel==2 }">
-										<strong style="padding-left:40px">[답변] ${dto.title }</strong>
+										<strong style="padding-left:40px" class="page_title">[답변] ${dto.title }</strong>
 										</c:if>
 									</c:if>
 									<c:if test="${(not empty sid) and (dto.plevel==1)}">

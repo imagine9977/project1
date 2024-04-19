@@ -18,6 +18,10 @@
 th.item1 { width:8%; }
 th.item2 { width:60%; }
 th.item3 { width:20%; }
+td {
+word-break: break-word;
+
+}
 </style>
 </head>
 <body>
@@ -36,10 +40,10 @@ th.item3 { width:20%; }
 			</nav>
 			<hr>
 		</div>
-		<div style="width:1400px; margin:0 auto;">
+		<div style="width:1400px; margin:0 auto; ">
 			<h3 class="page_title">질문 및 답변 상세보기</h3>
 			<div>
-				<table class="table">
+				<table class="table" >
 					<tbody>
 						<tr>
 							<th>글 번호</th>

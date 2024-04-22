@@ -38,7 +38,7 @@
 | 개인정보처리방침 |	오시는길	| 맛집 안내 |	 
 | 회원가입	| 	숙박 시설 안내	|
 #### 4-1-1. 자료수집 - word cloud
-![워드클라우드](./design/wordcloud2.png)
+![워드클라우드](./design/wordcloud.png)
 #### 4-1-2.  콘텐츠 분류 - card sorting
 ![콘텐츠분류](./design/cardSorting.png)
 #### 4-1-3. 서비스 흐름 설계 - usecase
